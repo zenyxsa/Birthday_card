@@ -10,12 +10,55 @@
   var galleryPrev = $('gallery-prev');
   var galleryNext = $('gallery-next');
   var galleryFrame = $('gallery-frame');
+  var fullscreenToggleBtn = $('gallery-fullscreen-toggle');
   var tab0 = $('tab-0');
   var tab1 = $('tab-1');
   var giftOpenBtn = $('gift-open');
   var galleryIndex = 0;
   var touchStartX = null;
+  var touchMoved = false;
   var isTransitioning = false;
+
+  function toggleFullscreen(forceState) {
+    if (!gallery) return;
+    var shouldBeFs = typeof forceState === 'boolean' ? forceState : !gallery.classList.contains('is-fullscreen');
+    if (shouldBeFs) {
+      gallery.classList.add('is-fullscreen');
+      var hint = gallery.querySelector('.fullscreen-exit-hint');
+      if (hint) {
+        hint.style.animation = 'none';
+        void hint.offsetHeight;
+        hint.style.animation = '';
+      }
+      var rfs = gallery.requestFullscreen || gallery.webkitRequestFullscreen || gallery.msRequestFullscreen;
+      if (rfs && !document.fullscreenElement && !document.webkitFullscreenElement) {
+        try {
+          var p = rfs.call(gallery);
+          if (p && p.catch) p.catch(function() {});
+        } catch (e) {}
+      }
+    } else {
+      gallery.classList.remove('is-fullscreen');
+      var efs = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+      if ((document.fullscreenElement || document.webkitFullscreenElement) && efs) {
+        try {
+          var ep = efs.call(document);
+          if (ep && ep.catch) ep.catch(function() {});
+        } catch (e) {}
+      }
+    }
+  }
+
+  document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement && gallery) {
+      gallery.classList.remove('is-fullscreen');
+    }
+  });
+  document.addEventListener('webkitfullscreenchange', function() {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement && gallery) {
+      gallery.classList.remove('is-fullscreen');
+    }
+  });
 
   function updateTabs(idx) {
     if (tab0 && tab1) {
@@ -84,6 +127,7 @@
   }
 
   function closeGallery() {
+    toggleFullscreen(false);
     gallery.classList.remove('is-open');
     gallery.setAttribute('aria-hidden', 'true');
     if (giftOpenBtn) {
@@ -96,7 +140,8 @@
   }
 
   if (galleryNext) {
-    galleryNext.addEventListener('click', function() {
+    galleryNext.addEventListener('click', function(e) {
+      e.stopPropagation();
       if (galleryIndex < galleryImages.length - 1) {
         showGalleryImage(galleryIndex + 1);
       }
@@ -104,7 +149,8 @@
   }
 
   if (galleryPrev) {
-    galleryPrev.addEventListener('click', function() {
+    galleryPrev.addEventListener('click', function(e) {
+      e.stopPropagation();
       if (galleryIndex > 0) {
         showGalleryImage(galleryIndex - 1);
       }
@@ -123,33 +169,61 @@
     });
   }
 
-  // Clicking image in the "Close" button region closes the gallery
+  if (fullscreenToggleBtn) {
+    fullscreenToggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleFullscreen(true);
+    });
+  }
+
+  // Clicking or tapping the artwork
   if (galleryImage) {
     galleryImage.addEventListener('click', function(event) {
+      if (touchMoved) {
+        touchMoved = false;
+        return;
+      }
       var rect = galleryImage.getBoundingClientRect();
       var relY = (event.clientY - rect.top) / rect.height;
       var relX = (event.clientX - rect.left) / rect.width;
-      // In Card 1: "Press to close ♡" is in the bottom right corner (relY > 0.85, relX > 0.7)
-      // In Card 2: "Close Card" is bottom center (relY > 0.85, 0.35 < relX < 0.65) or top right "X" (relY < 0.15, relX > 0.9)
-      var hitCloseButton = (relY > 0.82) || (relY < 0.16 && relX > 0.9);
-      if (hitCloseButton) {
-        closeGallery();
-      } else {
-        // Clicking elsewhere toggles to next image
-        showGalleryImage(galleryIndex === 0 ? 1 : 0);
+
+      // In Card 1: "Press to close ♡" is in the bottom right corner (relY > 0.82, relX > 0.7)
+      // In Card 2: "Close Card" is bottom center (relY > 0.82, 0.35 < relX < 0.65) or top right "X" (relY < 0.16, relX > 0.88)
+      var hitArtworkClose = (relY > 0.82 && (relX > 0.35 || galleryIndex === 0)) || (relY < 0.16 && relX > 0.88);
+      if (hitArtworkClose) {
+        if (gallery.classList.contains('is-fullscreen')) {
+          toggleFullscreen(false);
+        } else {
+          closeGallery();
+        }
+        return;
       }
+
+      // Tap image to toggle fullscreen mode!
+      toggleFullscreen();
     });
   }
 
   gallery.addEventListener('click', function(event) {
-    if (event.target.hasAttribute('data-gallery-close') || event.target === gallery) {
-      closeGallery();
+    if (event.target.hasAttribute('data-gallery-close') || event.target === gallery || event.target.classList.contains('gallery-backdrop')) {
+      if (gallery.classList.contains('is-fullscreen')) {
+        toggleFullscreen(false);
+      } else {
+        closeGallery();
+      }
     }
   });
 
   if (galleryFrame) {
     galleryFrame.addEventListener('touchstart', function(event) {
       touchStartX = event.changedTouches[0].screenX;
+      touchMoved = false;
+    }, { passive: true });
+
+    galleryFrame.addEventListener('touchmove', function(event) {
+      if (touchStartX !== null && Math.abs(event.changedTouches[0].screenX - touchStartX) > 10) {
+        touchMoved = true;
+      }
     }, { passive: true });
 
     galleryFrame.addEventListener('touchend', function(event) {
@@ -168,7 +242,14 @@
 
   document.addEventListener('keydown', function(event) {
     if (!gallery.classList.contains('is-open')) return;
-    if (event.key === 'Escape') closeGallery();
+    if (event.key === 'Escape') {
+      if (gallery.classList.contains('is-fullscreen')) {
+        toggleFullscreen(false);
+      } else {
+        closeGallery();
+      }
+      return;
+    }
     if (event.key === 'ArrowRight' && galleryIndex < galleryImages.length - 1) showGalleryImage(galleryIndex + 1);
     if (event.key === 'ArrowLeft' && galleryIndex > 0) showGalleryImage(galleryIndex - 1);
   });
