@@ -3,7 +3,7 @@
     return document.getElementById(id);
   }
 
-  var galleryImages = ['./ebru-gallery-1.jpg', './ebru-gallery-2.jpg'];
+  var galleryImages = ['./ebru-gallery-1.jpg?v=2', './ebru-gallery-2.jpg?v=2'];
   var gallery = $('present-gallery');
   var galleryImage = $('gallery-image');
   var galleryCount = $('gallery-count');
