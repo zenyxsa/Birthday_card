@@ -559,3 +559,39 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .cute-sticker-field .sticker { animation: none !important; }
 }
+
+/* Gift-box surprise and swipe gallery */
+.gift-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.8rem;background:radial-gradient(circle at 50% 40%,#fff 0,#fff0f8 48%,#f7eaff 100%);border-radius:0 0 12px 12px}
+.gift-intro{color:#a34f91;font-size:1.35rem;margin:0}
+.gift-open{position:relative;width:230px;height:250px;border:0;background:transparent;cursor:pointer;isolation:isolate;display:block;animation:giftFloat 3s ease-in-out infinite}
+.gift-box{position:absolute;width:150px;height:112px;left:40px;top:91px;border:5px solid #fff;border-radius:10px 10px 16px 16px;background:linear-gradient(135deg,#ff9bc8,#ed6eaa);box-shadow:0 12px 22px #a04e8f38,inset 0 0 0 3px #ffcae2}
+.gift-box:after{content:"";position:absolute;top:0;bottom:0;left:62px;width:20px;background:#fff0a9;border-left:3px solid #fff;border-right:3px solid #fff}
+.gift-lid{position:absolute;z-index:2;width:174px;height:35px;left:28px;top:78px;border:5px solid #fff;border-radius:10px;background:linear-gradient(135deg,#ffb5d7,#f77eb9);box-shadow:0 5px 8px #96468229;transform-origin:15% 100%;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.gift-ribbon{position:absolute;z-index:3;left:102px;top:91px;width:26px;height:112px;background:#fff0a9;border-left:3px solid #fff;border-right:3px solid #fff;pointer-events:none}
+.gift-bow{position:absolute;z-index:4;left:82px;top:42px;width:66px;height:50px;transition:transform .7s ease}
+.gift-bow i{position:absolute;top:10px;width:36px;height:27px;border:4px solid #fff;border-radius:80% 15% 80% 15%;background:#ff8dc2}
+.gift-bow i:first-child{left:0;transform:rotate(20deg)}.gift-bow i:last-child{right:0;transform:scaleX(-1) rotate(20deg)}
+.gift-bow:after{content:"";position:absolute;left:27px;top:20px;width:15px;height:15px;border:3px solid #fff;border-radius:50%;background:#ffdaeb}
+.gift-glow{position:absolute;inset:20px 10px 8px;border-radius:50%;background:radial-gradient(ellipse,#ffb7dc80,transparent 68%);z-index:-1;filter:blur(8px)}
+.gift-spark{position:absolute;color:#e99acb;font-size:2rem;animation:giftTwinkle 1.8s infinite}
+.gift-spark-one{left:14px;top:75px}.gift-spark-two{right:12px;top:95px;animation-delay:-.7s}.gift-spark-three{right:28px;top:35px;animation-delay:-1.2s}
+.gift-tap{position:absolute;left:0;right:0;bottom:0;color:#98518e;font-family:'Lobster',cursive;font-size:1.25rem}
+.gift-note{color:#9b6a9b;font-size:1rem;margin:0}.gift-sign{margin:0!important;color:#a75c98}
+.gift-open:hover .gift-lid,.gift-open:focus-visible .gift-lid{transform:translate(-8px,-28px) rotate(-18deg)}
+.gift-open:hover .gift-bow,.gift-open:focus-visible .gift-bow{transform:translate(-10px,-28px) rotate(-16deg)}
+@keyframes giftFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes giftTwinkle{0%,100%{opacity:.45;transform:scale(.8) rotate(-12deg)}50%{opacity:1;transform:scale(1.2) rotate(12deg)}}
+.present-gallery{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:18px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
+.present-gallery.is-open{opacity:1;visibility:visible}
+.gallery-backdrop{position:absolute;inset:0;background:#23143ad1;backdrop-filter:blur(9px)}
+.gallery-panel{position:relative;z-index:1;width:min(960px,96vw);max-height:94vh;padding:18px;border:2px solid #ffffffcc;border-radius:24px;background:linear-gradient(145deg,#fff3fb,#eee7ff);box-shadow:0 22px 80px #0005;display:flex;flex-direction:column;align-items:center;gap:10px}
+.gallery-kicker{margin:0;color:#8c4c9a;font-family:'Lobster',cursive;font-size:1.4rem}
+.gallery-frame{width:100%;display:grid;place-items:center;overflow:hidden;border-radius:14px;touch-action:pan-y}
+.gallery-frame img{display:block;width:auto;height:auto;max-width:100%;max-height:72vh;object-fit:contain;border-radius:12px;box-shadow:0 5px 24px #58346c33;user-select:none;-webkit-user-drag:none}
+.gallery-close{position:absolute;right:10px;top:8px;width:42px;height:42px;border:0;border-radius:50%;background:#fff;color:#9b55a0;font-size:2rem;line-height:1;cursor:pointer;box-shadow:0 2px 10px #b99acb}
+.gallery-controls{display:flex;align-items:center;justify-content:center;gap:22px;color:#8b4d9b;font-weight:bold}
+.gallery-controls button{width:42px;height:38px;border:0;border-radius:14px;background:#d98bc8;color:white;font-size:2rem;line-height:1;cursor:pointer}
+.gallery-controls button:disabled{opacity:.35;cursor:default}
+.gallery-hint{margin:0;color:#9d70a6;font-size:.9rem}
+@media(max-width:650px){.gift-wrap{padding:1rem!important}.gift-open{transform:scale(.9)}.gallery-panel{padding:12px;border-radius:18px}.gallery-frame img{max-height:68vh}.gallery-kicker{font-size:1.15rem}}
+@media(prefers-reduced-motion:reduce){.gift-open,.gift-spark{animation:none!important}.gift-lid,.gift-bow,.present-gallery{transition:none!important}}
