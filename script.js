@@ -3,7 +3,7 @@
     return document.getElementById(id);
   }
 
-  var galleryImages = ['./ebru-anime-birthday.jpg', './ebru-anime-birthday.jpg'];
+  var galleryImages = ['./ebru-gallery-1.avif', './ebru-gallery-2.avif'];
   var gallery = $('present-gallery'), galleryImage = $('gallery-image');
   var galleryCount = $('gallery-count'), galleryPrev = $('gallery-prev'), galleryNext = $('gallery-next');
   var galleryFrame = $('gallery-frame'), galleryIndex = 0, touchStartX = null;
