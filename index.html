@@ -38,25 +38,17 @@
     <br>
     <div id="card">
       <div id="card-inside">
-       <div class="wrap">
-  <center>
-    <p class="animated infinite wobble"><b><u>For Ebru, with warm wishes</u></b></p>
-    <center>
-      <p>
-        Ebru, I wanted to make your birthday a little more special, so I made you this little card. It may be made of
-        code, but every part of it comes with a warm wish for you. I hope your day is filled with smiles, laughter,
-        lovely surprises, and all the things that make you happy. &nbsp;<i class="em-svg em-blush"></i>
-      </p>
-      <p>
-        May this new year of your life bring you beautiful opportunities, unforgettable memories, good health, and
-        countless reasons to smile. Keep being your wonderful self, and never stop chasing the things that make your
-        heart happy. Have the loveliest birthday, Ebru — you deserve it!
-      </p>
-      <p class="signed">
-        <u>Made with warm wishes <i class="em-svg em-heart"></i> by Rishabh</u>
-      </p>
-</div>
-
+        <div class="wrap gift-wrap">
+          <p class="gift-intro">A little surprise for you, Ebru ♡</p>
+          <button id="gift-open" class="gift-open" type="button" aria-label="Tap to open your birthday present">
+            <span class="gift-glow"></span><span class="gift-bow"><i></i><i></i></span>
+            <span class="gift-lid"></span><span class="gift-box"><span class="gift-ribbon"></span></span>
+            <span class="gift-spark gift-spark-one">✦</span><span class="gift-spark gift-spark-two">♡</span><span class="gift-spark gift-spark-three">✧</span>
+            <span class="gift-tap">Tap to open your present!</span>
+          </button>
+          <p class="gift-note">I made something special just for you 💗</p>
+          <p class="signed gift-sign">With love ♡<br>Latios</p>
+        </div>
       </div>
       <div id="card-front">
         <div class="wrap">
@@ -129,7 +121,21 @@
         <div class="shadow"></div>
       </div>
     </div>
-    <div class="cute-sticker-field" aria-hidden="true">
+<div id="present-gallery" class="present-gallery" aria-hidden="true">
+      <div class="gallery-backdrop" data-gallery-close></div>
+      <section class="gallery-panel" role="dialog" aria-modal="true" aria-label="Birthday presents for Ebru">
+        <button class="gallery-close" type="button" aria-label="Close gallery" data-gallery-close>×</button>
+        <p class="gallery-kicker">A little something for you ♡</p>
+        <div class="gallery-frame" id="gallery-frame"><img id="gallery-image" src="./ebru-gallery-1.webp" alt="Birthday surprise for Ebru, page 1"></div>
+        <div class="gallery-controls">
+          <button id="gallery-prev" type="button" aria-label="Previous picture">‹</button>
+          <span id="gallery-count">1 / 2</span>
+          <button id="gallery-next" type="button" aria-label="Next picture">›</button>
+        </div>
+        <p class="gallery-hint">Swipe to see the next surprise ♡</p>
+      </section>
+    </div>
+        <div class="cute-sticker-field" aria-hidden="true">
       <span class="sticker sticker-heart">♡</span><span class="sticker sticker-bow">🎀</span>
       <span class="sticker sticker-star">✦</span><span class="sticker sticker-bunny">🐰</span>
       <span class="sticker sticker-sparkle">✧</span><span class="sticker sticker-heart-two">💗</span>
