@@ -1200,122 +1200,33 @@ footer {
   position: relative;
 }
 
-/* Full Screen Toggle Bar Button (Prominent on Mobile) */
-.gallery-fullscreen-bar-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  max-width: 380px;
-  margin: 4px auto 8px;
-  padding: 8px 18px;
-  background: linear-gradient(135deg, #b84fa0 0%, #76236b 100%);
-  color: #ffffff;
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-radius: 22px;
-  font-family: 'Lobster', cursive;
-  font-size: 1.02rem;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(118, 35, 107, 0.38);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-  animation: pulseFsBar 2.5s infinite;
-}
-
-@keyframes pulseFsBar {
-  0%, 100% { box-shadow: 0 4px 14px rgba(118, 35, 107, 0.38); }
-  50% { box-shadow: 0 4px 22px rgba(220, 95, 195, 0.7); }
-}
-
-.gallery-fullscreen-bar-btn:hover,
-.gallery-fullscreen-bar-btn:focus-visible {
-  transform: scale(1.03);
-  background: linear-gradient(135deg, #cb5fb3 0%, #892d7c 100%);
-}
-
-.gallery-fullscreen-bar-btn .fs-icon {
-  font-size: 1.15rem;
-}
-
-/* Full Screen button inside controls */
-.gallery-fullscreen-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  height: 38px;
-  background: linear-gradient(135deg, #b84fa0 0%, #76236b 100%);
-  color: #ffffff;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  border-radius: 18px;
-  font-family: 'Lobster', cursive;
-  font-size: 0.92rem;
-  cursor: pointer;
-  box-shadow: 0 3px 10px rgba(118, 35, 107, 0.3);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-.gallery-fullscreen-btn:hover,
-.gallery-fullscreen-btn:focus-visible {
-  transform: scale(1.05);
-  box-shadow: 0 4px 14px rgba(118, 35, 107, 0.45);
-}
-
+/* Little Full Screen Badge on Image */
 .gallery-fullscreen-badge {
   position: absolute;
   top: 10px;
   right: 10px;
   z-index: 5;
-  background: rgba(35, 16, 48, 0.82);
+  background: rgba(35, 14, 48, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  padding: 5px 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  padding: 4px 11px;
   font-family: 'Lobster', cursive;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   letter-spacing: 0.02em;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.32);
+  transition: transform 0.2s ease, background 0.2s ease;
   pointer-events: auto;
 }
 
 .gallery-fullscreen-badge:hover,
 .gallery-fullscreen-badge:focus-visible {
   background: rgba(184, 79, 160, 0.95);
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(184, 79, 160, 0.45);
-}
-
-.fullscreen-top-bar {
-  display: none;
-}
-
-.fullscreen-exit-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(25, 10, 36, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #ffffff;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-family: 'Lobster', cursive;
-  font-size: 0.98rem;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-  transition: transform 0.18s ease, background 0.18s ease;
-}
-
-.fullscreen-exit-btn:hover,
-.fullscreen-exit-btn:focus-visible {
-  transform: scale(1.05);
-  background: rgba(184, 79, 160, 0.95);
+  transform: scale(1.06);
+  box-shadow: 0 5px 14px rgba(184, 79, 160, 0.45);
 }
 
 .fullscreen-exit-hint {
@@ -1866,14 +1777,6 @@ footer {
 }
 
 /* Floating controls in Fullscreen */
-.present-gallery.is-fullscreen .fullscreen-top-bar {
-  display: flex !important;
-  position: fixed !important;
-  top: 14px !important;
-  left: 14px !important;
-  z-index: 130 !important;
-}
-
 .present-gallery.is-fullscreen .gallery-close {
   position: fixed !important;
   top: 14px !important;
@@ -1903,12 +1806,6 @@ footer {
 .present-gallery.is-fullscreen .gallery-controls #gallery-count {
   color: #ffffff !important;
   text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-}
-
-.present-gallery.is-fullscreen .gallery-fullscreen-btn {
-  background: rgba(255, 255, 255, 0.22) !important;
-  border: 1px solid rgba(255, 255, 255, 0.7) !important;
-  color: #ffffff !important;
 }
 
 .present-gallery.is-fullscreen .fullscreen-exit-hint {
