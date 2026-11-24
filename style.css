@@ -445,3 +445,73 @@ footer {
     opacity: 1;
   }
 }
+
+/* Ebru's birthday-card animations */
+.birthday-title {
+  animation: ebruTitleFloat 3.2s ease-in-out infinite,
+             ebruTitleGlow 2.4s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.birthday-sparkles {
+  position: relative;
+  z-index: 2;
+  margin: -1.1em auto 0.5em;
+  text-align: center;
+  color: #fff4c7;
+  font-size: 1.7rem;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9),
+               0 0 18px rgba(255, 214, 230, 0.9);
+  animation: ebruSparkle 2s ease-in-out infinite;
+}
+
+.cake_and_velas {
+  animation: ebruCakeReveal 1.4s 0.25s both ease-out;
+}
+
+.polaroid {
+  animation: ebruPhotoFloat 4s ease-in-out infinite;
+}
+
+#open, #close {
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+#open:hover, #close:hover,
+#open:focus-visible, #close:focus-visible {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 20px rgba(110, 20, 45, 0.28);
+}
+
+@keyframes ebruTitleFloat {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes ebruTitleGlow {
+  from { text-shadow: 2px 3px 0 #ffc8c8, 0 0 8px rgba(255,255,255,.35); }
+  to { text-shadow: 2px 3px 0 #ff9696, 0 0 26px rgba(255,255,255,.95), 0 0 42px rgba(255,190,210,.75); }
+}
+
+@keyframes ebruSparkle {
+  0%, 100% { opacity: .65; transform: scale(.96); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes ebruCakeReveal {
+  from { opacity: 0; transform: translateY(28px) scale(.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes ebruPhotoFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .birthday-title, .birthday-sparkles, .cake_and_velas, .polaroid {
+    animation: none !important;
+  }
+  #open, #close { transition: none; }
+}
