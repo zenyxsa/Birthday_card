@@ -521,33 +521,31 @@ footer {
 
 /* Illustrated chibi sticker characters */
 .cute-sticker-field {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  z-index: 30;
-  overflow: hidden;
+  z-index: 12;
+  overflow: visible;
   pointer-events: none;
 }
 .chibi-sticker {
   position: absolute;
+  display: block;
   width: clamp(58px, 7.5vw, 108px);
+  opacity: 1;
+  visibility: visible;
   filter: drop-shadow(0 5px 5px rgba(93, 54, 120, .22));
   transform-origin: 50% 75%;
   animation: chibiBob 4.2s ease-in-out infinite;
 }
-.chibi-sticker svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-}
-.chibi-girl-one { left: 1.5%; top: 16%; animation: chibiHop 4.4s ease-in-out infinite; }
-.chibi-bunny-one { left: 11%; bottom: 5%; width: clamp(52px, 6vw, 82px); animation-delay: -1.1s; }
-.chibi-cat-one { right: 2%; top: 18%; width: clamp(62px, 7vw, 96px); animation: chibiSway 5s ease-in-out infinite; }
-.chibi-girl-two { right: 2%; bottom: 9%; width: clamp(65px, 8vw, 112px); animation-delay: -2.2s; }
-.chibi-bunny-two { left: 43%; top: 3%; width: clamp(48px, 5.5vw, 76px); animation: chibiHop 4.8s ease-in-out infinite; animation-delay: -2.8s; }
-.chibi-cat-two { left: 2%; bottom: 26%; width: clamp(48px, 5.8vw, 80px); animation-delay: -3.1s; }
-.chibi-girl-three { right: 17%; top: 68%; width: clamp(52px, 6.3vw, 88px); animation: chibiSway 4.7s ease-in-out infinite; animation-delay: -1.7s; }
-.chibi-bunny-three { right: 14%; top: 5%; width: clamp(44px, 5.2vw, 72px); animation-delay: -3.4s; }
+.chibi-sticker svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chibi-girl-one { left: 1%; top: 8%; animation: chibiHop 4.4s ease-in-out infinite; }
+.chibi-bunny-one { left: 5%; bottom: 4%; width: clamp(52px, 6vw, 82px); animation-delay: -1.1s; }
+.chibi-cat-one { right: 1%; top: 10%; width: clamp(62px, 7vw, 96px); animation: chibiSway 5s ease-in-out infinite; }
+.chibi-girl-two { right: 1%; bottom: 5%; width: clamp(65px, 8vw, 112px); animation-delay: -2.2s; }
+.chibi-bunny-two { left: 43%; top: 1%; width: clamp(48px, 5.5vw, 76px); animation: chibiHop 4.8s ease-in-out infinite; animation-delay: -2.8s; }
+.chibi-cat-two { left: 1%; bottom: 27%; width: clamp(48px, 5.8vw, 80px); animation-delay: -3.1s; }
+.chibi-girl-three { right: 15%; top: 65%; width: clamp(52px, 6.3vw, 88px); animation: chibiSway 4.7s ease-in-out infinite; animation-delay: -1.7s; }
+.chibi-bunny-three { right: 13%; top: 2%; width: clamp(44px, 5.2vw, 72px); animation-delay: -3.4s; }
 @keyframes chibiBob {
   0%, 100% { transform: translateY(0) rotate(-5deg); }
   50% { transform: translateY(-13px) rotate(5deg); }
@@ -562,7 +560,7 @@ footer {
   50% { transform: translateY(-10px) rotate(-7deg); }
 }
 @media (max-width: 700px) {
-  .chibi-sticker { width: 58px; }
+  .chibi-sticker { width: 54px; }
   .chibi-bunny-two, .chibi-girl-three { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
