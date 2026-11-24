@@ -1,61 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
   <title>Happy Birthday, Ebru!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
-
+  <meta name="theme-color" content="#F26B38">
 </head>
-
 <body>
-  <!-- partial:index.partial.html -->
-  <!DOCTYPE html>
-  <html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="HandheldFriendly" content="true">
-    <title>A Birthday Surprise for Ebru</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css">
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-    <link rel="shortcut icon" href="icon/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta name="theme-color" content="#F26B38">
-  </head>
-
-  <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+  <main class="card-stage">
     <div id="card">
-      <div id="card-inside">
-        <div class="card-corner-bows" aria-hidden="true">
-          <span class="card-corner-bow card-corner-bow-tl"></span>
-          <span class="card-corner-bow card-corner-bow-tr"></span>
-          <span class="card-corner-bow card-corner-bow-bl"></span>
-          <span class="card-corner-bow card-corner-bow-br"></span>
-        </div>
-        <div class="wrap gift-wrap">
-          <p class="gift-intro">A little surprise for you, Ebru ♡</p>
-          <button id="gift-open" class="gift-open" type="button" aria-label="Tap to open your birthday present">
-            <span class="gift-glow"></span><span class="gift-bow"><i></i><i></i></span>
-            <span class="gift-lid"></span><span class="gift-box"><span class="gift-ribbon"></span></span>
-            <span class="gift-spark gift-spark-one">✦</span><span class="gift-spark gift-spark-two">♡</span><span class="gift-spark gift-spark-three">✧</span>
-            <span class="gift-tap">Tap to open your present!</span>
-          </button>
-          <p class="gift-note">I made something special just for you 💗</p>
-          <p class="signed gift-sign">With love ♡<br>Latios</p>
-        </div>
+      <!-- Mobile navigation pill bar shown only on mobile portrait when card is open -->
+      <div class="mobile-inside-nav" id="mobile-inside-nav" aria-label="Card inside pages">
+        <button type="button" class="mobile-nav-pill is-active" id="btn-show-present">🎁 Present</button>
+        <button type="button" class="mobile-nav-pill" id="btn-show-snapshot">📷 Snapshot</button>
+        <button type="button" class="mobile-nav-close" id="mobile-card-close" aria-label="Close card">✕ Close</button>
       </div>
+      <div id="card-inside">
+      <div class="card-corner-bows" aria-hidden="true">
+        <span class="card-corner-bow card-corner-bow-tl"></span>
+        <span class="card-corner-bow card-corner-bow-tr"></span>
+        <span class="card-corner-bow card-corner-bow-bl"></span
+        <span class="card-corner-bow card-corner-bow-br"></span>
+      </div>
+      <div class="wrap gift-wrap">
+        <p class="gift-intro">A little surprise for you, Ebru ♡</p>
+        <button id="gift-open" class="gift-open" type="button" aria-label="Tap to open your birthday present">
+          <span class="gift-glow"></span>
+          
+          <!-- Unified lid assembly: lid, vertical lid ribbon, and 3D bow stay perfectly connected -->
+          <span class="gift-lid-group">
+            <span class="gift-bow">
+              <span class="gift-bow-tail gift-bow-tail-left"></span>
+              <span class="gift-bow-tail gift-bow-tail-right"></span>
+              <span class="gift-bow-loop gift-bow-loop-left"></span>
+              <span class="gift-bow-loop gift-bow-loop-right"></span>
+              <span class="gift-bow-center"><i class="gift-bow-gem">✦</i></span>
+            </span>
+            <span class="gift-lid">
+              <span class="gift-lid-ribbon"></span>
+              <span class="gift-lid-lip"></span>
+            </span>
+          </span>
+
+          <!-- Box body with aligned vertical and horizontal ribbons -->
+          <span class="gift-box">
+            <span class="gift-ribbon-v"></span>
+            <span class="gift-ribbon-h"></span>
+            <span class="gift-box-inner-glow"></span>
+            <span class="gift-box-tag"><span>For Ebru ♡</span></span>
+          </span>
+
+          <!-- Floating magical sparkles -->
+          <span class="gift-sparks" aria-hidden="true">
+            <span class="gift-spark gift-spark-one">✦</span>
+            <span class="gift-spark gift-spark-two">♡</span>
+            <span class="gift-spark gift-spark-three">✧</span>
+            <span class="gift-spark gift-spark-four">⋆</span>
+            <span class="gift-spark gift-spark-five">✨</span>
+          </span>
+
+          <span class="gift-tap">Tap to open your present!</span>
+        </button>
+        <p class="gift-note">I made something special just for you 💗</p>
+        <p class="signed gift-sign">With love ♡<br>Latios</p>
+      </div>
+    </div>
       <div id="card-front">
         <div class="card-corner-bows" aria-hidden="true">
           <span class="card-corner-bow card-corner-bow-tl"></span>
@@ -122,32 +138,47 @@
         <button id="close" data-balloon="! bɿɒɔ ɘƨolɔ oɈ ʞɔilƆ" data-balloon-length="medium" data-balloon-pos="left"
           data-balloon-visible>&lt;</button>
         <div class="card-front_inside">
-          <br> <br> <br>
-          <div class="polaroid">
-            <div class="img" style="background-image: url('ebru-anime-birthday.jpg')"></div>
+          <div class="polaroid-wrapper">
+            <div class="polaroid">
+              <div class="img" style="background-image: url('ebru-anime-birthday.jpg')"></div>
+            </div>
+            <div class="polaroid-balloon"
+              data-balloon="A little birthday snapshot for you, Ebru! Hope this brings a smile to your face. 💗"
+              data-balloon-length="large" data-balloon-pos="up" data-balloon-visible></div>
           </div>
-          <div
-            data-balloon="A little birthday snapshot for you, Ebru! Hope this brings a smile to your face. 💗"
-            data-balloon-length="large" data-balloon-pos="up" data-balloon-visible></div>
         </div>
         <div class="shadow"></div>
       </div>
     </div>
-<div id="present-gallery" class="present-gallery" aria-hidden="true">
+  </main>
+  <div id="present-gallery" class="present-gallery" aria-hidden="true">
       <div class="gallery-backdrop" data-gallery-close></div>
       <section class="gallery-panel" role="dialog" aria-modal="true" aria-label="Birthday presents for Ebru">
-        <button class="gallery-close" type="button" aria-label="Close gallery" data-gallery-close>×</button>
-        <p class="gallery-kicker">A little something for you ♡</p>
-        <div class="gallery-frame" id="gallery-frame"><img id="gallery-image" src="./ebru-gallery-1.png" alt="Birthday surprise for Ebru, page 1"></div>
-        <div class="gallery-controls">
-          <button id="gallery-prev" type="button" aria-label="Previous picture">‹</button>
-          <span id="gallery-count">1 / 2</span>
-          <button id="gallery-next" type="button" aria-label="Next picture">›</button>
+        <button class="gallery-close" type="button" aria-label="Close gallery" data-gallery-close title="Close (Esc)">×</button>
+        <div class="gallery-header">
+          <p class="gallery-kicker">✨ Happy Birthday, Ebru! ✨</p>
+          <p class="gallery-subtitle">A special surprise gift just for you ♡</p>
         </div>
-        <p class="gallery-hint">Swipe to see the next surprise ♡</p>
+        <div class="gallery-tabs" role="tablist" aria-label="Surprise illustrations">
+          <button type="button" class="gallery-tab is-active" id="tab-0" data-tab-index="0" role="tab" aria-selected="true">
+            <span class="tab-heart">♡</span> Surprise Card 1
+          </button>
+          <button type="button" class="gallery-tab" id="tab-1" data-tab-index="1" role="tab" aria-selected="false">
+            <span class="tab-heart">♡</span> Surprise Card 2
+          </button>
+        </div>
+        <div class="gallery-frame" id="gallery-frame">
+          <img id="gallery-image" src="./ebru-gallery-1.jpg" alt="Birthday surprise for Ebru, page 1" draggable="false">
+        </div>
+        <div class="gallery-controls">
+          <button id="gallery-prev" type="button" aria-label="Previous picture" title="Previous (Left Arrow)">‹</button>
+          <span id="gallery-count">1 / 2</span>
+          <button id="gallery-next" type="button" aria-label="Next picture" title="Next (Right Arrow)">›</button>
+        </div>
+        <p class="gallery-hint">Tap tabs above, swipe, or use arrows to view both gifts ♡ Click outside to close</p>
       </section>
     </div>
-        <div class="cute-sticker-field" aria-hidden="true">
+    <div class="cute-sticker-field" aria-hidden="true">
       <span class="sticker sticker-heart">♡</span><span class="sticker sticker-bow">🎀</span>
       <span class="sticker sticker-star">✦</span><span class="sticker sticker-bunny">🐰</span>
       <span class="sticker sticker-sparkle">✧</span><span class="sticker sticker-heart-two">💗</span>
@@ -155,12 +186,6 @@
       <span class="sticker sticker-star-two">⭐</span><span class="sticker sticker-bow-two">🎀</span>
       <span class="sticker sticker-heart-three">💕</span><span class="sticker sticker-flower-two">🌷</span>
     </div>
-  </body>
-
-  </html>
-  <!-- partial -->
   <script src="./script.js"></script>
-
 </body>
-
 </html>
