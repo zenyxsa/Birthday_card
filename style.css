@@ -1200,16 +1200,78 @@ footer {
   position: relative;
 }
 
+/* Full Screen Toggle Bar Button (Prominent on Mobile) */
+.gallery-fullscreen-bar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 380px;
+  margin: 4px auto 8px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, #b84fa0 0%, #76236b 100%);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  font-family: 'Lobster', cursive;
+  font-size: 1.02rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(118, 35, 107, 0.38);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  animation: pulseFsBar 2.5s infinite;
+}
+
+@keyframes pulseFsBar {
+  0%, 100% { box-shadow: 0 4px 14px rgba(118, 35, 107, 0.38); }
+  50% { box-shadow: 0 4px 22px rgba(220, 95, 195, 0.7); }
+}
+
+.gallery-fullscreen-bar-btn:hover,
+.gallery-fullscreen-bar-btn:focus-visible {
+  transform: scale(1.03);
+  background: linear-gradient(135deg, #cb5fb3 0%, #892d7c 100%);
+}
+
+.gallery-fullscreen-bar-btn .fs-icon {
+  font-size: 1.15rem;
+}
+
+/* Full Screen button inside controls */
+.gallery-fullscreen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  height: 38px;
+  background: linear-gradient(135deg, #b84fa0 0%, #76236b 100%);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  font-family: 'Lobster', cursive;
+  font-size: 0.92rem;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(118, 35, 107, 0.3);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.gallery-fullscreen-btn:hover,
+.gallery-fullscreen-btn:focus-visible {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(118, 35, 107, 0.45);
+}
+
 .gallery-fullscreen-badge {
   position: absolute;
   top: 10px;
   right: 10px;
   z-index: 5;
-  background: rgba(35, 16, 48, 0.76);
+  background: rgba(35, 16, 48, 0.82);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   padding: 5px 12px;
   font-family: 'Lobster', cursive;
@@ -1223,131 +1285,41 @@ footer {
 
 .gallery-fullscreen-badge:hover,
 .gallery-fullscreen-badge:focus-visible {
-  background: rgba(184, 79, 160, 0.92);
+  background: rgba(184, 79, 160, 0.95);
   transform: scale(1.05);
   box-shadow: 0 6px 16px rgba(184, 79, 160, 0.45);
 }
 
-.fullscreen-exit-hint {
+.fullscreen-top-bar {
   display: none;
 }
 
-/* ===================================================
-   Full Screen Lightbox Mode for Gift Box Images
-=================================================== */
-.present-gallery.is-fullscreen {
-  padding: 0 !important;
-  background: #000000 !important;
-}
-
-.present-gallery.is-fullscreen .gallery-backdrop {
-  background: rgba(4, 2, 8, 0.98) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.present-gallery.is-fullscreen .gallery-panel {
-  width: 100vw !important;
-  max-width: 100vw !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  max-height: 100dvh !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  justify-content: center !important;
-  transform: none !important;
-}
-
-.present-gallery.is-fullscreen .gallery-header,
-.present-gallery.is-fullscreen .gallery-tabs,
-.present-gallery.is-fullscreen .gallery-hint,
-.present-gallery.is-fullscreen .gallery-fullscreen-badge {
-  display: none !important;
-}
-
-.present-gallery.is-fullscreen .gallery-frame {
-  width: 100vw !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.present-gallery.is-fullscreen .gallery-frame img {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100vw !important;
-  max-height: 100vh !important;
-  max-height: 100dvh !important;
-  object-fit: contain !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  cursor: zoom-out !important;
-}
-
-/* Floating controls in Fullscreen */
-.present-gallery.is-fullscreen .gallery-close {
-  position: fixed !important;
-  top: 14px !important;
-  right: 14px !important;
-  z-index: 120 !important;
-  background: rgba(255, 255, 255, 0.88) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
-}
-
-.present-gallery.is-fullscreen .gallery-controls {
-  position: fixed !important;
-  bottom: 16px !important;
-  left: 0 !important;
-  right: 0 !important;
-  z-index: 120 !important;
-  margin: 0 auto !important;
-  padding: 6px 16px !important;
-  background: rgba(20, 8, 30, 0.72) !important;
+.fullscreen-exit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(25, 10, 36, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  border-radius: 30px !important;
-  width: fit-content !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
-}
-
-.present-gallery.is-fullscreen .gallery-controls #gallery-count {
-  color: #ffffff !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-}
-
-.present-gallery.is-fullscreen .fullscreen-exit-hint {
-  display: block;
-  position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 120;
-  background: rgba(20, 8, 30, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
   border-radius: 20px;
-  padding: 5px 16px;
-  font-family: 'Indie Flower', cursive;
-  font-size: 0.95rem;
-  pointer-events: none;
-  animation: fadeOutHint 4s forwards;
+  padding: 8px 16px;
+  font-family: 'Lobster', cursive;
+  font-size: 0.98rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: transform 0.18s ease, background 0.18s ease;
 }
 
-@keyframes fadeOutHint {
-  0%, 75% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+.fullscreen-exit-btn:hover,
+.fullscreen-exit-btn:focus-visible {
+  transform: scale(1.05);
+  background: rgba(184, 79, 160, 0.95);
+}
+
+.fullscreen-exit-hint {
+  display: none;
 }
 
 .gallery-frame img {
@@ -1817,4 +1789,149 @@ footer {
   .card-corner-bow-br { transform: rotate(180deg) scale(.78); }
   .cute-sticker-field .sticker { font-size: 1.4rem !important; }
   .sticker-bunny, .sticker-cloud, .sticker-star-two { display: none !important; }
+}
+
+/* ===================================================
+   Full Screen Lightbox Mode for Gift Box Images
+   (Positioned at bottom of stylesheet to ensure absolute priority)
+=================================================== */
+.present-gallery.is-fullscreen {
+  padding: 0 !important;
+  background: #000000 !important;
+  z-index: 99999 !important;
+}
+
+.present-gallery.is-fullscreen .gallery-backdrop {
+  background: rgba(4, 2, 8, 0.98) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.present-gallery.is-fullscreen .gallery-panel {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transform: none !important;
+}
+
+.present-gallery.is-fullscreen .gallery-header,
+.present-gallery.is-fullscreen .gallery-tabs,
+.present-gallery.is-fullscreen .gallery-hint,
+.present-gallery.is-fullscreen .gallery-fullscreen-badge,
+.present-gallery.is-fullscreen .gallery-fullscreen-bar-btn {
+  display: none !important;
+}
+
+.present-gallery.is-fullscreen .gallery-frame {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.present-gallery.is-fullscreen .gallery-frame img {
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  max-height: 100dvh !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  cursor: zoom-out !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Floating controls in Fullscreen */
+.present-gallery.is-fullscreen .fullscreen-top-bar {
+  display: flex !important;
+  position: fixed !important;
+  top: 14px !important;
+  left: 14px !important;
+  z-index: 130 !important;
+}
+
+.present-gallery.is-fullscreen .gallery-close {
+  position: fixed !important;
+  top: 14px !important;
+  right: 14px !important;
+  z-index: 130 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+}
+
+.present-gallery.is-fullscreen .gallery-controls {
+  position: fixed !important;
+  bottom: 16px !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 130 !important;
+  margin: 0 auto !important;
+  padding: 6px 16px !important;
+  background: rgba(20, 8, 30, 0.78) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 30px !important;
+  width: fit-content !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.present-gallery.is-fullscreen .gallery-controls #gallery-count {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.present-gallery.is-fullscreen .gallery-fullscreen-btn {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  color: #ffffff !important;
+}
+
+.present-gallery.is-fullscreen .fullscreen-exit-hint {
+  display: block;
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 130;
+  background: rgba(20, 8, 30, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.95rem;
+  pointer-events: none;
+  animation: fadeOutHint 4s forwards;
+}
+
+@keyframes fadeOutHint {
+  0%, 75% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
 }

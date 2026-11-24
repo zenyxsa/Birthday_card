@@ -11,6 +11,9 @@
   var galleryNext = $('gallery-next');
   var galleryFrame = $('gallery-frame');
   var fullscreenToggleBtn = $('gallery-fullscreen-toggle');
+  var fullscreenBarBtn = $('gallery-fullscreen-bar-btn');
+  var fullscreenControlBtn = $('gallery-fullscreen-btn');
+  var fullscreenExitTop = $('gallery-fullscreen-exit-top');
   var tab0 = $('tab-0');
   var tab1 = $('tab-1');
   var giftOpenBtn = $('gift-open');
@@ -24,6 +27,9 @@
     var shouldBeFs = typeof forceState === 'boolean' ? forceState : !gallery.classList.contains('is-fullscreen');
     if (shouldBeFs) {
       gallery.classList.add('is-fullscreen');
+      if (fullscreenControlBtn) {
+        fullscreenControlBtn.innerHTML = '✕ Exit';
+      }
       var hint = gallery.querySelector('.fullscreen-exit-hint');
       if (hint) {
         hint.style.animation = 'none';
@@ -39,6 +45,9 @@
       }
     } else {
       gallery.classList.remove('is-fullscreen');
+      if (fullscreenControlBtn) {
+        fullscreenControlBtn.innerHTML = '⛶ Full Screen';
+      }
       var efs = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
       if ((document.fullscreenElement || document.webkitFullscreenElement) && efs) {
         try {
@@ -52,11 +61,17 @@
   document.addEventListener('fullscreenchange', function() {
     if (!document.fullscreenElement && !document.webkitFullscreenElement && gallery) {
       gallery.classList.remove('is-fullscreen');
+      if (fullscreenControlBtn) {
+        fullscreenControlBtn.innerHTML = '⛶ Full Screen';
+      }
     }
   });
   document.addEventListener('webkitfullscreenchange', function() {
     if (!document.fullscreenElement && !document.webkitFullscreenElement && gallery) {
       gallery.classList.remove('is-fullscreen');
+      if (fullscreenControlBtn) {
+        fullscreenControlBtn.innerHTML = '⛶ Full Screen';
+      }
     }
   });
 
@@ -176,6 +191,27 @@
     });
   }
 
+  if (fullscreenBarBtn) {
+    fullscreenBarBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleFullscreen(true);
+    });
+  }
+
+  if (fullscreenControlBtn) {
+    fullscreenControlBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleFullscreen();
+    });
+  }
+
+  if (fullscreenExitTop) {
+    fullscreenExitTop.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleFullscreen(false);
+    });
+  }
+
   // Clicking or tapping the artwork
   if (galleryImage) {
     galleryImage.addEventListener('click', function(event) {
@@ -221,7 +257,7 @@
     }, { passive: true });
 
     galleryFrame.addEventListener('touchmove', function(event) {
-      if (touchStartX !== null && Math.abs(event.changedTouches[0].screenX - touchStartX) > 10) {
+      if (touchStartX !== null && Math.abs(event.changedTouches[0].screenX - touchStartX) > 28) {
         touchMoved = true;
       }
     }, { passive: true });
